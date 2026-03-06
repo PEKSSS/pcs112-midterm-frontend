@@ -7,7 +7,7 @@ submit.addEventListener("click", () => {
     let category = document.querySelector("#category").value;
     let stockCount = document.querySelector("#stock-count").value;
     let locationCode = document.querySelector("#location-code").value;
-    let lastUpdated = new Date().toLocaleString();
+    let lastUpdated = document.querySelector("#last-updated").value;
     let formData = {productName, category, stockCount, locationCode, lastUpdated};
 
     fetch("https://pcs112-midterm-zn1k.onrender.com/api/users",{
@@ -38,11 +38,13 @@ submit.addEventListener("click", () => {
         .then(data => {
             console.log(data);
             data.forEach(element => {
-                html += `<li>ID: ${element.id} <br> Product Name: ${element.productName} <br> Category: ${element.category} <br> Stock Count: ${element.stockCount} <br> Location Code: ${element.locationCode} <br> Last Updated: ${element.lastUpdated}<br></li>`;
+                html += `<li>ID: ${element.id} <br> Product Name: ${element.productName} <br> Category: ${element.category} <br> Stock Count: ${element.stockCount} <br> Location Code: ${element.locationCode} <br> Last Updated: ${element.lastUpdated}</li>`;
             })
 
             content.innerHTML = html;
         })
+        .catch(error=>{
+        console.log(error);
+    })
 
     }
-
