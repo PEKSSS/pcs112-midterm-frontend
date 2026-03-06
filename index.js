@@ -10,7 +10,7 @@ submit.addEventListener("click", () => {
     let lastUpdated = new Date().toLocaleString();
     let formData = {productName, category, stockCount, locationCode, lastUpdated};
 
-    fetch("http://localhost:7000/api/users",{
+    fetch("https://pcs112-midterm-zn1k.onrender.com/api/users",{
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
@@ -30,7 +30,7 @@ submit.addEventListener("click", () => {
     function getUsers() {
         let html = "";
 
-        fetch("http://localhost:7000/api/users", {mode: 'cors'})
+        fetch("https://pcs112-midterm-zn1k.onrender.com/api/users", {mode: 'cors'})
         .then(response => {
             console.log(response);
             return response.json();
@@ -43,4 +43,5 @@ submit.addEventListener("click", () => {
 
             content.innerHTML = html;
         })
+
     }
